@@ -1,0 +1,52 @@
+body{
+    /* height:100vh; */
+    background-color:coral;
+
+}
+#score{
+color:Grey;
+}
+.easyGrid{
+    display:flex;
+    flex-wrap:wrap;
+    height:480px;
+    width:360px;
+    margin:auto auto;
+
+}
+.easyCards{
+    height:120px;
+    width:120px;
+}
+.mediumGrid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 480px;
+    width: 400px;
+    margin: 2rem auto 2rem auto;
+
+}
+.mediumCards {
+    height: 80px;
+    width: 100px;
+}
+.hardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 560px;
+    width: 420px;
+    margin: 2rem auto 2rem auto;
+
+}
+
+.hardCards {
+    height: 70px;
+    width: 70px;
+}
+.open{
+    display:block;
+
+}
+#modal-content{
+    display:hidden
+}
