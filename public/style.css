@@ -3,6 +3,7 @@ body{
     background-color:coral;
 
 }
+/* memory game css */
 #score{
 color:Grey;
 }
@@ -49,4 +50,23 @@ color:Grey;
 }
 #modal-content{
     display:hidden
+}
+
+/* Wack A Mole CSS */
+.square{
+    
+    height:150px;
+    border:solid 2px black;
+
+}
+.wacGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    justify-content:center;
+    align-content:center;
+    margin:2rem auto;
+    height: 450px;
+    width:450px;
+
+
 }

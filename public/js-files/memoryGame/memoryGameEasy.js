@@ -67,8 +67,23 @@ let cardsChosen=[]
 let cardsChosenNameList=[]
 let cardsWon=0;
 let cardsMatched=[]
+const timeLeft= document.querySelector('#time-left')
+let currentTime= timeLeft.textContent;
  document.getElementById('result').textContent=0;
+const startGame=()=>{
+currentTime--
+timeLeft.textContent= currentTime
 
+if(currentTime >=0 && cardsMatched.length===cardArray.length){
+    clearInterval(timerId)
+    document.getElementById('gameStatus').textContent=`Congratulations! You've Matched All The Fruits. Your Best Time is ${60-currentTime} seconds`
+}else if(currentTime===0 && cardsMatched.length <cardArray.length) {
+     clearInterval(timerId)
+    document.getElementById('gameStatus').textContent=`Game Over! You matched ${cardsMatched.length/2} fruits. Try Again!`
+}
+}
+
+let timerId= setInterval(startGame,1000)
 //creating game board
 const createBoard=()=>{
 
@@ -87,6 +102,7 @@ grid.appendChild(card);
 createBoard();
 const matchedList=()=>{
  let content = document.getElementById('modal-content'); 
+    content.style.display='none';
 let blank='../../images/card-back.jpg'
 let cards= document.querySelectorAll('img')
 let a= cardsChosen[0]
@@ -97,30 +113,31 @@ console.log(cardsChosenNameList)
     let optionB= cardsChosenNameList[1];
     
     if(optionA!==optionB){
-      
+      content.style.display='block'
       content.textContent="Incorrect Match!"
       content.classList.add('open');
      
         setTimeout(()=>{
-            content.classList.remove('open');
       cards[a].setAttribute('src', blank)
       cards[b].setAttribute('src', blank)
         
         },500)
+         setTimeout(()=>{
+           content.style.display='none'
+         },2000)
        
     }else{
          content.textContent='You Made a Match!'
         cardsWon++
         cardsMatched.push(a,b)
+        content.style.display='block'
+        setTimeout(()=>{
+           content.style.display='none'
+         },2000)
     }
      cardsChosenNameList=[]
         cardsChosen=[]
     console.log(cardsMatched.length)
-
-
-    if(cardsMatched.length===cardArray.length){
-        document.getElementById('gameStatus').textContent="Congratulations! You've Matched All The Fruits"
-    }
       document.getElementById('result').textContent=cardsWon
 }
 
